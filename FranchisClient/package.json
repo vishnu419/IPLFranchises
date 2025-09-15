@@ -1,0 +1,48 @@
+{
+  "name": "franchis-client",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "ng": "ng",
+    "start": "run-script-os",
+    "start:windows": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng serve --host=127.0.0.1",
+    "start:default": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng serve --host=127.0.0.1",
+    "build": "ng build --configuration production",
+    "build:dev": "ng build",
+    "test": "ng test",
+    "lint": "ng lint"
+  },
+  "dependencies": {
+    "@angular/animations": "^16.2.0",
+    "@angular/common": "^16.2.0",
+    "@angular/compiler": "^16.2.0",
+    "@angular/core": "^16.2.0",
+    "@angular/forms": "^16.2.0",
+    "@angular/platform-browser": "^16.2.0",
+    "@angular/platform-browser-dynamic": "^16.2.0",
+    "@angular/router": "^16.2.0",
+    "rxjs": "^7.8.1",
+    "tslib": "^2.6.2",
+    "zone.js": "~0.13.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^16.2.0",
+    "@angular/cli": "^16.2.0",
+    "@angular/compiler-cli": "^16.2.0",
+    "@types/node": "^20.6.0",
+    "karma": "^6.4.2",
+    "karma-chrome-launcher": "^3.2.0",
+    "karma-coverage": "^2.2.0",
+    "karma-jasmine": "^5.1.0",
+    "karma-jasmine-html-reporter": "^2.1.0",
+    "jasmine-core": "^5.1.1",
+    "jasmine-spec-reporter": "^7.0.0",
+    "run-script-os": "*",
+    "typescript": "~4.9.3"
+  },
+  "engines": {
+    "node": ">=18",
+    "npm": ">=10"
+  }
+}

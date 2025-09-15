@@ -1,0 +1,121 @@
+.product-detail-page {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  background: #f9fbe7;
+  padding: 3rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+.product-detail-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.09);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: row;
+  gap: 2.5rem;
+  width: 100%;
+  max-width: 900px;
+}
+.product-detail-card {
+  display: flex;
+  flex-direction: row;
+  gap: 2.5rem;
+  width: 100%;
+}
+.product-images {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.product-main-image {
+  width: 280px;
+  height: 280px;
+  object-fit: contain;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  background: #fafcff;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+}
+.product-thumbnails {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+.product-thumbnail {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: 6px;
+  border: 1.5px solid #e0e0e0;
+  background: #fff;
+  cursor: pointer;
+  transition: border 0.2s;
+}
+.product-thumbnail.selected, .product-thumbnail:hover {
+  border: 2px solid #1976d2;
+}
+.product-detail-info {
+  flex: 2 1 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.product-detail-info h2 {
+  font-size: 2rem;
+  color: #ff6f00;
+  margin-bottom: 0.5rem;
+}
+.product-detail-info .team {
+  color: #1976d2;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.product-detail-info .price {
+  font-size: 1.5rem;
+  color: #388e3c;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+}
+.product-detail-info .desc {
+  color: #444;
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+}
+.product-detail-info button {
+  background: var(--ipl-accent, #1976d2);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.7rem 2.2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 1rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.product-detail-info button.added {
+  background: #4caf50 !important;
+  color: #fff !important;
+  cursor: default !important;
+  border: 1.5px solid #388e3c !important;
+}
+.product-detail-info button:not(.added):hover {
+  background: #ff6f00;
+}
+@media (max-width: 900px) {
+  .product-detail-page, .product-detail-card {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .product-images {
+    flex-direction: row;
+    justify-content: center;
+  }
+}

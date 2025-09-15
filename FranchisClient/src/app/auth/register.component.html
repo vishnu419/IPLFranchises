@@ -1,0 +1,27 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="auth-form">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input id="username" formControlName="username" type="text" />
+    <div *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.invalid" class="validation-error">
+      Username is required
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input id="email" formControlName="email" type="email" />
+    <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid" class="validation-error">
+      <span *ngIf="registerForm.get('email')?.errors?.['required']">Email is required</span>
+      <span *ngIf="registerForm.get('email')?.errors?.['email']">Invalid email</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input id="password" formControlName="password" type="password" />
+    <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid" class="validation-error">
+      <span *ngIf="registerForm.get('password')?.errors?.['required']">Password is required</span>
+      <span *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters</span>
+    </div>
+  </div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <button type="submit" [disabled]="loading">Register</button>
+</form>

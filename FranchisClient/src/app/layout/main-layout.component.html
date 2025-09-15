@@ -1,0 +1,32 @@
+<nav class="navbar">
+  <div class="navbar-left">
+    <img src="assets/ipl-logo.png" alt="IPL Logo" class="logo" />
+    <a routerLink="/" class="nav-link">Home</a>
+    <a routerLink="/products" class="nav-link">Products</a>
+    <a routerLink="/teams" class="nav-link">Team Info</a>
+  </div>
+  <div class="navbar-right">
+    <a routerLink="/cart" class="nav-link cart-link">
+      🛒
+      <span class="cart-badge" *ngIf="(cartCount$ | async) as count">{{ count }}</span>
+    </a>
+    <ng-container *ngIf="user; else login">
+      <div class="profile-menu-wrapper" (mouseleave)="showMenu=false">
+        <span class="user-icon" (click)="showMenu=!showMenu">👤</span>
+        <span class="user-name">{{ user.username }}</span>
+        <div class="profile-menu" *ngIf="showMenu">
+          <button (click)="goToProfile()">Profile</button>
+          <button (click)="goToOrders()">Order History</button>
+          <button (click)="logout()">Logout</button>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #login>
+      <a routerLink="/login" class="nav-link login-link">Login</a>
+    </ng-template>
+  </div>
+</nav>
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>
+<app-footer></app-footer>

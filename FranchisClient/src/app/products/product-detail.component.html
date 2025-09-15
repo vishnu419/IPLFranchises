@@ -1,0 +1,28 @@
+<div class="product-detail-page">
+  <div class="product-detail-card" *ngIf="product">
+    <div class="product-images">
+      <img class="product-main-image" [src]="selectedImage || product.imageUrl || 'assets/ipl1.png'" [alt]="product.name" />
+      <div class="product-thumbnails" *ngIf="product.images?.length > 1">
+        <img *ngFor="let img of product.images" class="product-thumbnail" [class.selected]="img === selectedImage" [src]="img" [alt]="product.name" (click)="selectImage(img)" />
+      </div>
+    </div>
+    <div class="product-detail-info">
+      <h2>{{ product.name }}</h2>
+      <p class="team" *ngIf="product.franchiseName">Franchise: {{ product.franchiseName }}</p>
+      <p class="price">₹{{ product.price }}</p>
+      <p class="desc" *ngIf="product.description">{{ product.description }}</p>
+      <button 
+        [disabled]="isInCart(product?.id)"
+        (click)="addToCart(product)"
+        [ngClass]="{'added': isInCart(product?.id)}">
+        <ng-container *ngIf="isInCart(product?.id); else addText">
+          ✓ Added to Cart
+        </ng-container>
+        <ng-template #addText>Add to Cart</ng-template>
+      </button>
+    </div>
+  </div>
+  <div *ngIf="loading">Loading product…</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+</div>
+

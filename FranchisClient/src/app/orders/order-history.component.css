@@ -1,0 +1,79 @@
+.order-history-page {
+	max-width: 700px;
+	margin: 2rem auto;
+	background: #fff;
+	padding: 2rem;
+	border-radius: 10px;
+	box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+h2 {
+	color: var(--ipl-primary);
+	margin-bottom: 1.5rem;
+}
+.order-list {
+	margin-bottom: 1.5rem;
+}
+.order-card {
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	margin-bottom: 1.5rem;
+	padding: 1.2rem 1.5rem;
+	background: #fafcff;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+}
+.order-header {
+	font-size: 1.1rem;
+	margin-bottom: 0.7rem;
+	color: #ff6f00;
+	font-weight: 600;
+}
+.order-items {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 0.5rem;
+}
+.order-items th, .order-items td {
+	border: 1px solid #e0e0e0;
+	padding: 0.5rem 0.8rem;
+	text-align: left;
+}
+.order-items th {
+	background: #f5f5f5;
+	color: #333;
+}
+.order-items td {
+	background: #fff;
+}
+.product-link {
+	color: #1976d2;
+	text-decoration: underline;
+	cursor: pointer;
+	transition: color 0.2s;
+}
+.product-link:hover {
+	color: #ff6f00;
+}
+.pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	margin-top: 1.5rem;
+}
+.pagination button {
+	background: #1976d2;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	padding: 0.4rem 1.1rem;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+.pagination button:disabled {
+	background: #bdbdbd;
+	cursor: not-allowed;
+}
+.pagination button:not(:disabled):hover {
+	background: #ff6f00;
+}

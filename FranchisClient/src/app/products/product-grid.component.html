@@ -1,0 +1,48 @@
+<div class="product-grid-container">
+  <div class="grid-toolbar">
+    <input type="text" class="search-input" [(ngModel)]="search" (keyup.enter)="onSearch()" placeholder="Search products" />
+    <select [(ngModel)]="selectedFranchise" (change)="onSearch()" class="franchise-dropdown">
+      <option value="">All Franchises</option>
+      <option *ngFor="let f of franchises" [value]="f.id">{{ f.name }}</option>
+    </select>
+    <button (click)="onSearch()">Search</button>
+    <button (click)="onClearFilter()" class="clear-btn" *ngIf="search.trim() || selectedFranchise">Clear</button>
+    <label>
+      Page size:
+      <select [(ngModel)]="pageSize" (change)="onPageSizeChange()">
+        <option *ngFor="let s of pageSizeOptions" [value]="s">{{ s }}</option>
+      </select>
+    </label>
+  </div>
+
+  <div *ngIf="loading">Loading products…</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div class="product-grid" *ngIf="!loading && !error">
+    <div class="product-card" *ngFor="let product of products">
+      <img [src]="product.imageUrl || 'assets/ipl1.png'" [alt]="product.name || 'Product'" [title]="product.name || 'Product'" />
+      <div class="product-info">
+        <h3>
+          <a [routerLink]="['/products', product.id]" class="product-link">{{ product.name }}</a>
+        </h3>
+        <p class="team" *ngIf="product.franchiseName">{{ product.franchiseName }}</p>
+        <p class="price">₹{{ product.price }}</p>
+      </div>
+      <button 
+        [disabled]="isInCart(product.id)"
+        (click)="addToCart(product)"
+        [ngClass]="{'added': isInCart(product.id)}">
+        <ng-container *ngIf="isInCart(product.id); else addText">
+          ✓ Added to Cart
+        </ng-container>
+        <ng-template #addText>Add to Cart</ng-template>
+      </button>
+    </div>
+  </div>
+
+  <div class="pagination" *ngIf="!loading && !error && totalPages > 1">
+    <button (click)="onPageChange(page-1)" [disabled]="page === 1">Prev</button>
+    <span>Page {{page}} of {{totalPages}}</span>
+    <button (click)="onPageChange(page+1)" [disabled]="page === totalPages">Next</button>
+  </div>
+</div>

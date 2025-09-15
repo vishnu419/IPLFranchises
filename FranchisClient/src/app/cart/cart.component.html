@@ -1,0 +1,41 @@
+<div class="cart-container" *ngIf="(state$ | async) as state">
+  <h2>Your Cart</h2>
+  <div *ngIf="!state.items.length">Your cart is empty.</div>
+  <table *ngIf="state.items.length" class="cart-table">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of state.items">
+        <td>
+          <img [src]="item.imageUrl || 'assets/ipl1.png'" alt="{{item.name}}" class="cart-img" />
+          {{ item.name }}
+        </td>
+        <td>₹{{ item.price }}</td>
+        <td>
+          <input type="number" min="1" [(ngModel)]="item.quantity" (change)="updateQty(item.productId, item.quantity)" />
+        </td>
+        <td>₹{{ item.price * item.quantity }}</td>
+        <td><button (click)="remove(item.productId)">Remove</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="state.items.length" class="cart-summary">
+    <div>Total: <b>₹{{ cart.total }}</b></div>
+    <button (click)="clear()">Clear Cart</button>
+    <button 
+      [disabled]="!state.items.length || placing"
+      (click)="placeOrder()">
+      {{ placing ? 'Placing Order...' : 'Place Order' }}
+    </button>
+    
+  </div>
+  <div *ngIf="placed" class="order-success">Order placed successfully!</div>
+  <div *ngIf="error" class="order-error">{{ error }}</div>
+</div>

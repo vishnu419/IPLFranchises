@@ -1,0 +1,17 @@
+<div class="banner-container">
+    <div class="banner-image-wrapper">
+    <img [src]="images[currentIndex].url" class="banner-image" alt="Banner image" />
+    <div class="banner-caption" *ngIf="images[currentIndex].caption">
+      {{ images[currentIndex].caption }}
+    </div>
+  </div>
+  <div class="banner-dots">
+    <span *ngFor="let img of images; let i = index"
+          [class.active]="i === currentIndex"
+          (click)="goTo(i)"></span>
+  </div>
+</div>
+<ng-template #noImages>
+  
+  <div style="color: red;">No banner images available</div>
+</ng-template>

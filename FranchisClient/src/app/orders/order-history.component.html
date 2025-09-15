@@ -1,0 +1,40 @@
+<div class="order-history-page">
+  <h2>Order History</h2>
+  <div *ngIf="loading">Loading orders…</div>
+  <div *ngIf="error" class="order-error">{{ error }}</div>
+  <div *ngIf="!loading && !error && !orders.length">No orders found.</div>
+  <div *ngIf="orders.length">
+    <div class="order-list">
+      <div class="order-card" *ngFor="let order of orders">
+        <div class="order-header">
+          <b>Order #{{ order.id }}</b> <span class="date">({{ order.orderDate | date:'medium' }})</span>
+        </div>
+        <table class="order-items">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of order.items">
+              <td>
+                <a [routerLink]="['/products', item.productId]" class="product-link">{{ item.productName }}</a>
+              </td>
+              <td>{{ item.quantity }}</td>
+              <td>₹{{ item.price }}</td>
+              <td>₹{{ item.price * item.quantity }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="pagination" *ngIf="totalPages > 1">
+      <button (click)="onPageChange(page-1)" [disabled]="page === 1">Prev</button>
+      <span>Page {{page}} of {{totalPages}}</span>
+      <button (click)="onPageChange(page+1)" [disabled]="page === totalPages">Next</button>
+    </div>
+  </div>
+</div>
